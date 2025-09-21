@@ -1,5 +1,4 @@
 // storage-adapter-import-placeholder
-import 'dotenv/config'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -13,8 +12,6 @@ import { Media } from './collections/Media'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
-console.log('DATABASE_URL from env:', process.env.DATABASE_URL)
 
 export default buildConfig({
   admin: {
@@ -31,7 +28,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: process.env.DATABASE_URI || '',
     },
   }),
   sharp,

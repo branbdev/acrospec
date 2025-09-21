@@ -1,9 +1,8 @@
-import 'dotenv/config'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 
-export const GET = async (_request: Request) => {
-  const _payload = await getPayload({
+export const GET = async (request: Request) => {
+  const payload = await getPayload({
     config: configPromise,
   })
 
